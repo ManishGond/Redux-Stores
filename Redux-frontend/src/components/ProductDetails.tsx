@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // ✅ Added useNavigate
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../stores/store";
 import styles from "../styles/ProductDetail.module.css";
@@ -14,13 +14,13 @@ import { toast } from "react-toastify";
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate(); // ✅ Init
   const user = useSelector((state: RootState) => state.user);
   const products = useSelector((state: RootState) => state.products.products);
   const cartItem = useSelector((state: RootState) =>
     state.cart.items.find((item) => item.product.id === Number(id))
   );
 
-  // Fetch products if not available (e.g. on page reload)
   useEffect(() => {
     if (products.length === 0) {
       dispatch(fetchProducts());
@@ -44,6 +44,7 @@ const ProductDetail = () => {
     if (deleteProduct.fulfilled.match(result)) {
       toast.success("✅ Product deleted!");
       dispatch(fetchProducts());
+      navigate("/"); // ✅ Redirect to homepage
     } else {
       toast.error("❌ Failed to delete product!");
     }
@@ -97,7 +98,6 @@ const ProductDetail = () => {
           >
             Buy Now
           </button>
-
         </div>
 
         {isAdmin && (

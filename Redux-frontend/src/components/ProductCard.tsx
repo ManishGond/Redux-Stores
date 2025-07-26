@@ -6,9 +6,7 @@ import {
   incrementQuantity,
   decrementQuantity,
 } from '../features/cart/cartSlice';
-import { fetchProducts, type Product } from '../features/product/productSlice';
-import { deleteProduct } from '../features/product/productSlice';
-import { toast } from 'react-toastify';
+import { type Product } from '../features/product/productSlice';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }: { product: Product }) => {
@@ -18,25 +16,7 @@ const ProductCard = ({ product }: { product: Product }) => {
     state.cart.items.find((item) => item.product.id === product.id)
   );
 
-  const user = useSelector((state: RootState) => state.user);
-  const isAdmin = user.email === 'manish.n.gond@gmail.com';
-
   const handleAddToCart = () => dispatch(addToCart(product.id));
-
-  const handleDelete = async () => {
-    const confirm = window.confirm("Are you sure you want to delete this product?");
-    if (!confirm) return;
-
-    const resultAction = await dispatch(deleteProduct(product.id));
-
-    if (deleteProduct.fulfilled.match(resultAction)) {
-      toast.success("✅ Product deleted!");
-      dispatch(fetchProducts());
-    } else {
-      toast.error("❌ Failed to delete product!");
-    }
-  };
-
   const estimatedDelivery = "Fri, 1 Aug"; // Mocked
 
   return (
@@ -47,14 +27,9 @@ const ProductCard = ({ product }: { product: Product }) => {
           src={product.imageUrl}
           alt={product.name}
         />
-        {isAdmin && (
-          <button className={styles.deleteBtn} onClick={handleDelete}>
-            ❌
-          </button>
-        )}
       </div>
 
-      {/* Product Title as Link */}
+      {/* Title Link */}
       <Link to={`/product/${product.id}`} className={styles.titleLink}>
         {product.name}
       </Link>
@@ -64,7 +39,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         {product.description}
       </div>
 
-      {/* Price + Discount */}
+      {/* Price Info */}
       <div className={styles.priceRow}>
         <strong>₹{product.price}</strong>
         <span className={styles.mrp}>₹{product.price + 100}</span>
@@ -73,10 +48,10 @@ const ProductCard = ({ product }: { product: Product }) => {
         </span>
       </div>
 
-      {/* Delivery Date */}
+      {/* Delivery */}
       <div className={styles.delivery}>FREE delivery {estimatedDelivery}</div>
 
-      {/* Cart Actions */}
+      {/* Cart Controls */}
       {cartItem ? (
         <div>
           <button

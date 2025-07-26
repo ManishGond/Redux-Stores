@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { login } from "../features/auth/userSlice";
 import axios from "../api/axios";
 import styles from "../styles/Login.module.css";
+import storeLogo from "../assets/images/redux-logo.svg"; // ✅ added
 
 const Login = () => {
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
@@ -35,32 +36,39 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} className={styles.form}>
-      <h2>Login</h2>
+    <>
+      <div className={styles.logoBox}>
+        <img src={storeLogo} alt="redux logo" className={styles.logo} />
+        <h1 className={styles.logoText}>reduxStore</h1>
+      </div>
 
-      <input
-        placeholder="Email"
-        type="email"
-        value={loginForm.email}
-        onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
-        required
-      />
-      <input
-        placeholder="Password"
-        type="password"
-        value={loginForm.password}
-        onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-        required
-      />
+      <form onSubmit={handleLogin} className={styles.form}>
+        <h2>Login</h2>
 
-      <button type="submit" className={styles.loginBtn} disabled={loading}>
-        {loading ? "Logging in..." : "Login"}
-      </button>
+        <input
+          placeholder="Email"
+          type="email"
+          value={loginForm.email}
+          onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
+          required
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          value={loginForm.password}
+          onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+          required
+        />
 
-      <p className={styles.switch}>
-        Don't have an account? <Link to="/signup">Signup</Link>
-      </p>
-    </form>
+        <button type="submit" className={styles.loginBtn} disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
+
+        <p className={styles.switch}>
+          Don't have an account? <Link to="/signup">Signup</Link>
+        </p>
+      </form>
+    </>
   );
 };
 

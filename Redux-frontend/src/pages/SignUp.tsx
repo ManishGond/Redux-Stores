@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { login } from "../features/auth/userSlice";
 import axios from "../api/axios";
 import styles from "../styles/Login.module.css";
+import storeLogo from "../assets/images/redux-logo.svg"; // ✅ Add this
 
 const SignUp = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -35,39 +36,46 @@ const SignUp = () => {
   };
 
   return (
-    <form onSubmit={handleSignUp} className={styles.form}>
-      <h2>Sign Up</h2>
+    <>
+      <div className={styles.logoBox}>
+        <img src={storeLogo} alt="redux logo" className={styles.logo} />
+        <h1 className={styles.logoText}>reduxStore</h1>
+      </div>
 
-      <input
-        type="text"
-        placeholder="Name"
-        value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
-        required
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={(e) => setForm({ ...form, password: e.target.value })}
-        required
-      />
+      <form onSubmit={handleSignUp} className={styles.form}>
+        <h2>Sign Up</h2>
 
-      <button type="submit" className={styles.loginBtn} disabled={loading}>
-        {loading ? "Signing up..." : "Sign Up"}
-      </button>
+        <input
+          type="text"
+          placeholder="Name"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+          required
+        />
 
-      <p className={styles.switch}>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
-    </form>
+        <button type="submit" className={styles.loginBtn} disabled={loading}>
+          {loading ? "Signing up..." : "Sign Up"}
+        </button>
+
+        <p className={styles.switch}>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </form>
+    </>
   );
 };
 
