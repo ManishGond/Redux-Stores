@@ -1,37 +1,43 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { login } from '../features/auth/userSlice'
+import { useNavigate, Link } from "react-router-dom";
+import { login } from "../features/auth/userSlice";
 import axios from "../api/axios";
-
+import styles from "../styles/Login.module.css";
 
 const SignUp = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: ""
-  })
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [loading, setLoading] = useState(false);
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
+    setLoading(true);
+
     try {
-      const response = await axios.post('/auth/signup', form)
-      dispatch(login({
-        ...response.data.user,
-        token: response.data.token
-      }))
-      console.log(response.status)
-      navigate("/")
+      const response = await axios.post("/auth/signup", form);
+
+      setTimeout(() => {
+        dispatch(
+          login({
+            ...response.data.user,
+            token: response.data.token,
+          })
+        );
+        navigate("/");
+      }, 3000);
     } catch (error: any) {
-      alert(error.response?.data?.error || 'Signup Failed')
+      alert(error.response?.data?.error || "Signup Failed");
+      setLoading(false);
     }
-  }
+  };
+
   return (
-    <form onSubmit={handleSignUp}>
+    <form onSubmit={handleSignUp} className={styles.form}>
       <h2>Sign Up</h2>
+
       <input
         type="text"
         placeholder="Name"
@@ -53,7 +59,14 @@ const SignUp = () => {
         onChange={(e) => setForm({ ...form, password: e.target.value })}
         required
       />
-      <button type="submit">Sign Up</button>
+
+      <button type="submit" className={styles.loginBtn} disabled={loading}>
+        {loading ? "Signing up..." : "Sign Up"}
+      </button>
+
+      <p className={styles.switch}>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
     </form>
   );
 };

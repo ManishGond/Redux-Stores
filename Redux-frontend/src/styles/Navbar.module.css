@@ -1,0 +1,114 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  background-color: #1e1e2f;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+}
+
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ba9cff;
+  letter-spacing: 1px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.links a:hover {
+  color: #61dafb;
+}
+
+.adminLink {
+  color: #f5a623;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.userName {
+  font-weight: 500;
+  color: #cccccc;
+  font-weight: bolder;
+}
+
+.logoutBtn {
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.logoutBtn:hover {
+  background: #c92030;
+}
+
+.authBtn {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: background 0.2s ease-in-out;
+}
+
+.authBtn:hover {
+  background-color: #0056b3;
+}
+
+.authBtnOutline {
+  background-color: transparent;
+  color: #007bff;
+  padding: 6px 16px;
+  border: 1px solid #007bff;
+  border-radius: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.authBtnOutline:hover {
+  background-color: #007bff;
+  color: white;
+}

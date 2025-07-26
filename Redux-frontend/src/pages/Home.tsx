@@ -2,77 +2,41 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../stores/store";
 import { fetchProducts } from "../features/product/productSlice";
-import { addToCart, decrementQuantity, incrementQuantity } from "../features/cart/cartSlice";
+import ProductCard from "../components/ProductCard";
+import styles from "../styles/App.module.css"; // Optional: if you're using any container/grid utility
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { products, loading, error } = useSelector((state: RootState) => state.products);
-  const { isLoggedIn } = useSelector((state: RootState) => state.user)
-  const cart = useSelector((state: RootState) => state.cart)
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  if (loading) return <p>Loading products...</p>;
-  if (error) return <p>Error: {error}</p>;
-
-  const handleAddToCart = (productId: number) => {
-    if (!isLoggedIn) {
-      alert("Please login to add items to your cart.");
-      return;
-    }
-    dispatch(addToCart(productId));
-  };
+  if (loading) return <p className="text-center mt-5">Loading products...</p>;
+  if (error) return <p className="text-danger text-center mt-5">Error: {error}</p>;
 
   return (
-    <div>
-      <h2>Products</h2>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-        {products.map((product) => {
-          const cartItem = cart.items.find((item) => item.product.id === product.id);
-
-          return (
-            <div
-              key={product.id}
-              style={{
-                border: "1px solid #ccc",
-                padding: "1rem",
-                width: "200px",
-                borderRadius: "8px",
-              }}
-            >
-              <img
-                src={product.imageUrl}
-                alt={product.name}
-                width={180}
-                height={180}
-                style={{ objectFit: "cover", borderRadius: "4px" }}
-              />
-              <h4>{product.name}</h4>
-              <p>{product.description}</p>
-              <strong>₹{product.price}</strong>
-
-              {/* Cart UI */}
-              <div style={{ marginTop: "10px" }}>
-                {cartItem ? (
-                  <div>
-                    <button onClick={() => dispatch(decrementQuantity(product.id))}>−</button>
-                    <span style={{ margin: "0 10px" }}>{cartItem.quantity}</span>
-                    <button onClick={() => dispatch(incrementQuantity(product.id))}>+</button>
-                  </div>
-                ) : (
-                  <button onClick={() => handleAddToCart(product.id)}>
-                    Add to Cart
-                  </button>
-                )}
+    <div className={`container mt-4 ${styles.container}`}>
+      {/* 🔁 Check for empty product list */}
+      {products.length === 0 ? (
+        <p className="text-center text-muted mt-5">No products to show.</p>
+      ) : (
+        <div className="row g-3">
+          {[...products].reverse().map((product) => (
+            <div className="col-sm-6 col-md-4 col-lg-3">
+              <div className="h-100">
+                <ProductCard product={product} />
               </div>
             </div>
-          );
-        })}
-      </div>
+
+          ))}
+        </div>
+
+      )}
     </div>
   );
+
 };
 
 export default Home;

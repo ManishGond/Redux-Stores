@@ -1,0 +1,124 @@
+{
+  "products": [
+    {
+      "name": "Nike Men Running Shoes",
+      "description": "Nike running shoes with React foam technology.",
+      "price": 10331,
+      "imageUrl": "https://m.media-amazon.com/images/I/51UcgCzuwPL._SY695_.jpg"
+    },
+    {
+      "name": "Samsung Galaxy Watch6 Classic Bluetooth (47mm, Black, Compatible with Android only) | Introducing BP & ECG Features",
+      "description": "Smartwatch with health monitoring features and AMOLED display.",
+      "price": 22999,
+      "imageUrl": "https://m.media-amazon.com/images/I/41Q+MNft5ML._SY300_SX300_.jpg"
+    },
+    {
+      "name": "Boat Rockerz 450",
+      "description": "Wireless headphones with deep bass and 15hr playback.",
+      "price": 1499,
+      "imageUrl": "https://m.media-amazon.com/images/I/51FNnHjzhQL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Echo Dot (5th Gen)",
+      "description": "Smart speaker with Alexa and improved bass.",
+      "price": 2999,
+      "imageUrl": "https://m.media-amazon.com/images/I/81lGxS2ZisL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Sony WH-1000XM4",
+      "description": "Industry-leading noise cancellation headphones.",
+      "price": 24999,
+      "imageUrl": "https://m.media-amazon.com/images/I/71zfpkr4bYL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Apple MacBook Air M2",
+      "description": "Supercharged with M2 chip and 13.6-inch Retina display.",
+      "price": 109900,
+      "imageUrl": "https://m.media-amazon.com/images/I/71RDgtHsREL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Canon EOS 1500D",
+      "description": "DSLR camera with 24.1MP and WiFi support.",
+      "price": 44999,
+      "imageUrl": "https://m.media-amazon.com/images/I/916GGqnsG+L._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "HP Pavilion x360",
+      "description": "Touchscreen 2-in-1 laptop with i5 processor.",
+      "price": 67999,
+      "imageUrl": "https://m.media-amazon.com/images/I/71fHNU8KnQL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Noise ColorFit Pro 3",
+      "description": "Fitness smartwatch with SpO2 and heart rate monitor.",
+      "price": 2999,
+      "imageUrl": "https://m.media-amazon.com/images/I/61KZHJ7OezL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Bajaj LED Ceiling Light",
+      "description": "Energy-saving LED light for modern interiors.",
+      "price": 499,
+      "imageUrl": "https://m.media-amazon.com/images/I/71mTjEwSJfL._AC_UL480_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Samsung SSD 980 1TB",
+      "description": "High-speed NVMe SSD for faster performance.",
+      "price": 7499,
+      "imageUrl": "https://m.media-amazon.com/images/I/419dpKuUuiL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "ASUS ROG Gaming Mouse",
+      "description": "Ergonomic mouse with RGB lighting and DPI control.",
+      "price": 2699,
+      "imageUrl": "https://m.media-amazon.com/images/I/51jgW+-QcLL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "SteelSeries Mechanical Keyboard",
+      "description": "Gaming keyboard with mechanical keys and RGB backlight.",
+      "price": 34260,
+      "imageUrl": "https://m.media-amazon.com/images/I/71HmUNj01VL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Mi Power Bank 20000mAh",
+      "description": "Fast charging dual port power bank.",
+      "price": 1999,
+      "imageUrl": "https://m.media-amazon.com/images/I/41vBAaU8clL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Fire-Boltt Ninja Call Pro",
+      "description": "Bluetooth calling smartwatch with 1.69” display.",
+      "price": 1499,
+      "imageUrl": "https://m.media-amazon.com/images/I/61gnwDgVZbL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Apple AirPods Pro",
+      "description": "Active noise cancellation with adaptive EQ.",
+      "price": 24999,
+      "imageUrl": "https://m.media-amazon.com/images/I/61oCISLE+PL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "OnePlus Buds Z2",
+      "description": "True wireless earbuds with Dolby Atmos support.",
+      "price": 4499,
+      "imageUrl": "https://m.media-amazon.com/images/I/61VKXOPKdaL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "TP-Link WiFi 6 Router",
+      "description": "Dual-band Gigabit router for faster streaming.",
+      "price": 3899,
+      "imageUrl": "https://m.media-amazon.com/images/I/414yPRKlAsL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "JBL Flip 6",
+      "description": "Portable Bluetooth speaker with powerful bass.",
+      "price": 8999,
+      "imageUrl": "https://m.media-amazon.com/images/I/81nT721hWGL._AC_UY327_FMwebp_QL65_.jpg"
+    },
+    {
+      "name": "Samsung T7 Portable SSD",
+      "description": "Fast external SSD with 1TB storage.",
+      "price": 8999,
+      "imageUrl": "https://m.media-amazon.com/images/I/81VKxjrWZdL._AC_UY327_FMwebp_QL65_.jpg"
+    }
+  ]
+}
