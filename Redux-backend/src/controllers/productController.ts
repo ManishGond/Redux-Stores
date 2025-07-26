@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
-import { io } from "../server";
 
 const prisma = new PrismaClient();
 
@@ -25,8 +24,6 @@ export const createProduct = async (req: Request, res: Response) => {
       },
     });
 
-    io.emit("productAdded", newProduct);
-
     res.status(201).json(newProduct);
   } catch (error) {
     res.status(500).json({ error: "Failed to create product" });
@@ -40,11 +37,8 @@ export const deleteProduct = async (req: Request, res: Response) => {
     await prisma.cartItem.deleteMany({ where: { productId } });
     await prisma.products.delete({ where: { id: productId } });
 
-    io.emit("productDeleted", productId);
-
     res.json({ message: "Product deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: "Failed to delete product" });
   }
 };
-

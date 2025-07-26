@@ -4,7 +4,6 @@ import type { AppDispatch, RootState } from "../stores/store";
 import { fetchProducts } from "../features/product/productSlice";
 import ProductCard from "../components/ProductCard";
 import styles from "../styles/App.module.css";
-import { socket } from "../socket/socket"; // 👈 import socket
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,16 +13,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
-
-    // ✅ Socket listeners
-    socket.on("productAdded", () => dispatch(fetchProducts()));
-    socket.on("productDeleted", () => dispatch(fetchProducts()));
-
-    // 🧼 Cleanup listeners
-    return () => {
-      socket.off("productAdded");
-      socket.off("productDeleted");
-    };
   }, [dispatch]);
 
   if (loading) return <p className="text-center mt-5">Loading products...</p>;
