@@ -6,7 +6,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUserProfile } from "./features/auth/authAction";
 import { type AppDispatch } from "./stores/store";
-
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+import { fetchCart } from "./features/cart/cartSlice";
 function App() {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -14,13 +16,14 @@ function App() {
 
     if (token) {
       dispatch(loadUserProfile())
+      dispatch(fetchCart())
     }
   }, [dispatch])
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={"<HomePage />"} />
-        <Route path="/cart" element={"<CartPage />"} />
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
       </Route>
 
       {/* Routes without Navbar */}
