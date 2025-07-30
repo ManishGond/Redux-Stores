@@ -40,7 +40,6 @@ Welcome to **reduxStore**, a full-stack e-commerce web application built using R
 - Node.js + Express
 - Prisma ORM (MySQL)
 - JWT Authentication
-- Socket.io
 
 **Database**
 - MySQL
